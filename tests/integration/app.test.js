@@ -35,4 +35,4 @@ it('strapi is defined', () => {
 });
 
 require('./hello');
-// require('./google-agenda');
+require('./google-agenda');
