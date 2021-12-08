@@ -9,7 +9,9 @@
     "build": "strapi build",
     "strapi": "strapi",
     "test": "NODE_ENV=test ./node_modules/.bin/jest --forceExit --runInBand --cache --detectOpenHandles",
-    "test:watch": "NODE_ENV=test ./node_modules/.bin/jest --watchAll --runInBand --cache --detectOpenHandles ./tests/integration/app.test.js"
+    "test:watch": "NODE_ENV=test ./node_modules/.bin/jest --watchAll --runInBand --cache --detectOpenHandles ./tests/integration/app.test.js",
+    "test:unit": "NODE_ENV=test ./node_modules/.bin/jest --forceExit --runInBand --cache --detectOpenHandles ./tests/unit --coverage",
+    "test:unit:watch": "NODE_ENV=test ./node_modules/.bin/jest --watchAll --runInBand --cache --detectOpenHandles ./tests/unit"
   },
   "devDependencies": {
     "@jest/globals": "^27.4.2",
@@ -18,8 +20,8 @@
     "supertest": "^6.1.6"
   },
   "dependencies": {
-    "knex": "0.21.18",
-    "sqlite3": "5.0.0",
+    "knex": "0.95.14",
+    "sqlite3": "5.0.2",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
     "strapi-connector-bookshelf": "3.6.8",
