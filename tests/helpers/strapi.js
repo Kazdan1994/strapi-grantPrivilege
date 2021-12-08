@@ -1,5 +1,5 @@
 const { jest: requiredJest } = require('@jest/globals');
-const Strapi = require('@strapi/strapi');
+const Strapi = require('strapi');
 const http = require('http');
 const {getRole} = require('../factories/user');
 

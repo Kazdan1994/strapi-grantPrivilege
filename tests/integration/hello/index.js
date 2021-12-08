@@ -1,6 +1,7 @@
 'use strict';
 
 const { describe, it, expect } = require('@jest/globals');
+const request = require('supertest');
 const {createUser} = require("../../factories/user");
 const {grantPrivilege, jwt} = require("../../helpers/strapi");
 
@@ -9,17 +10,17 @@ describe('hello tests', () => {
     const user = await createUser();
 
     await grantPrivilege(
-      'administrateur',
-      'permissions.application.controllers.veterinary.create'
+      'authenticated',
+      'permissions.application.controllers.hello.find'
     );
 
     const response = await request(strapi.server)
-      .get('/hellos')
+      .get('/hello')
       .set('accept', 'application/json')
       .set('Content-Type', 'application/json')
       .set('Authorization', 'Bearer ' + jwt(user.id));
 
     expect(response.status).toBe(200);
-    expect(response.body).toBe({ message: 'hello world' });
+    expect(response.body).toMatchObject({ message: 'hello world' });
   });
 });

@@ -1,8 +1,9 @@
 'use strict';
 
-const { beforeAll, afterAll, it, expect } = require('@jest/globals');
+const { beforeAll, afterAll, beforeEach, it, expect } = require('@jest/globals');
 const fs = require('fs');
 const { setupStrapi } = require('../helpers/strapi');
+const {deleteUsers} = require("../factories/user");
 
 /** this code is called once before any test is called */
 beforeAll(async () => {
@@ -25,9 +26,12 @@ afterAll(async () => {
   }
 });
 
-it('strapi is defined', async (done) => {
+beforeEach(async () => {
+  await deleteUsers();
+});
+
+it('strapi is defined', () => {
   expect(strapi).toBeDefined();
-  done();
 });
 
 require('./hello');
