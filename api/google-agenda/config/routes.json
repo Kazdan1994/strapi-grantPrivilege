@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/google-agenda",
+      "handler": "google-agenda.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/google-agenda/count",
+      "handler": "google-agenda.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/google-agenda/:id",
+      "handler": "google-agenda.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/google-agenda",
+      "handler": "google-agenda.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/google-agenda/:id",
+      "handler": "google-agenda.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/google-agenda/:id",
+      "handler": "google-agenda.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

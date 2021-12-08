@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "google_agenda",
+  "info": {
+    "name": "google-agenda"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "done": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
