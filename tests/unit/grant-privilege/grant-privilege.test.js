@@ -3,7 +3,7 @@ const {describe, it, expect} = require('@jest/globals');
 
 function updateObject (value) {
   return value
-    .match(/[a-z-]+[^.|^[\]']/gm)
+    .match(/[a-zA-Z-]+[^.|^[\]']/gm)
     .reduceRight((obj, next) => ({
       [next]: obj }), { enabled: true, policy: '' });
 }
