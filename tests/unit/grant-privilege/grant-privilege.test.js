@@ -9,7 +9,7 @@ function updateObject (value) {
   }
 
   return value
-    .split('.')
+    .match(/[a-z]+[^.]/gm)
     .reduceRight((obj, next) => ({
       [next]: obj }), { enabled: true, policy: '' });
 }
