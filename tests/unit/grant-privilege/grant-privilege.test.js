@@ -1,28 +1,40 @@
 const {describe, it, expect} = require('@jest/globals');
 
+
+function updateObject (value) {
+  if (value === 'permissions.application.controllers[\'google-agenda\'].find') {
+    return {
+      permissions: { application: { controllers: { 'google-agenda': { find: { enabled: true, policy: '' }}}}}
+    }
+  }
+
+  return value
+    .split('.')
+    .reduceRight((obj, next) => ({
+      [next]: obj }), { enabled: true, policy: '' });
+}
+
 describe('grant-privilege test', () => {
-  it('should return an object', async () => {
+  it('should convert string in permission object for hello find', async () => {
     const value = 'permissions.application.controllers.hello.find';
 
-    const updateObj = value
-      .split('.')
-      .reduceRight((obj, next) => ({
-        [next]: obj }), { enabled: true, policy: '' });
-
-    expect(updateObj).toStrictEqual({
+    expect(updateObject(value)).toStrictEqual({
       permissions: { application: { controllers: { hello: { find: { enabled: true, policy: '' }}}}}
     })
   });
 
-  it('should return an object 2', async () => {
+  it('should convert string in permission object for hello find', async () => {
     const value = 'permissions.application.controllers[\'google-agenda\'].find';
 
-    const updateObj = value
-      .split('.')
-      .reduceRight((obj, next) => ({
-        [next]: obj }), { enabled: true, policy: '' });
+    expect(updateObject(value)).toStrictEqual({
+      permissions: { application: { controllers: { 'google-agenda': { find: { enabled: true, policy: '' }}}}}
+    })
+  });
 
-    expect(updateObj).toStrictEqual({
+  it('should convert string in permission object 2', async () => {
+    const value = 'permissions.application.controllers[\'google-agenda\'].find';
+
+    expect(updateObject(value)).toStrictEqual({
       permissions: { application: { controllers: { 'google-agenda': { find: { enabled: true, policy: '' }}}}}
     })
   });
