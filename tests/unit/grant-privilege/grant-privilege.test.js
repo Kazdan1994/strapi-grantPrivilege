@@ -2,14 +2,8 @@ const {describe, it, expect} = require('@jest/globals');
 
 
 function updateObject (value) {
-  if (value === 'permissions.application.controllers[\'google-agenda\'].find') {
-    return {
-      permissions: { application: { controllers: { 'google-agenda': { find: { enabled: true, policy: '' }}}}}
-    }
-  }
-
   return value
-    .match(/[a-z]+[^.]/gm)
+    .match(/[a-z-]+[^.|^[\]']/gm)
     .reduceRight((obj, next) => ({
       [next]: obj }), { enabled: true, policy: '' });
 }
